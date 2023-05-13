@@ -105,10 +105,4 @@ trainer.train()
 trainer.save_model()
 
 # TODO: hyperparameter tuning (on GPU!!)
-val_metrics = trainer.evaluate(eval_dataset=val_dataset)
-print(f'Val Acc: {val_metrics["accuracy"]}, Precision: {val_metrics["precision"]}, '
-      f'Recall: {val_metrics["recall"]}, F1: {val_metrics["f1"]}')
 
-test_metrics = trainer.evaluate(eval_dataset=test_dataset)
-print(f'Test Acc: {test_metrics["accuracy"]}, Precision: {test_metrics["precision"]}, '
-      f'Recall: {test_metrics["recall"]}, F1: {test_metrics["f1"]}')

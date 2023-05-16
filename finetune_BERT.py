@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 def process_file(file):
     for line in file:
-        jsonl = json.loads(line)
+        jsonl = json.loads(line.replace('\\"', ''))
         for instance in jsonl['instances']:
             line1 = jsonl['instruction'] + instance['input']
             line2 = instance['output']

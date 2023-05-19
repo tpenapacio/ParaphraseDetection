@@ -30,12 +30,12 @@ def compute_metrics(pred):
 
 
 data = []
-with open('../data/seed_tasks.jsonl', 'r') as f:
+with open('data/seed_tasks.jsonl', 'r') as f:
     process_file(f)
 
 # this code is for adding the examples we generated (I named it classifier_training_tasks.jsonl)
-# with open('../data/classifier_training_tasks.jsonl', 'r') as f:
-#     process_file(f)
+with open('data/classifier_training_tasks.jsonl', 'r') as f:
+    process_file(f)
 
 df1 = pd.DataFrame(data)
 

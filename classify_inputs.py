@@ -1,7 +1,5 @@
 from transformers import pipeline, BertForSequenceClassification, BertTokenizerFast
 import torch
-from finetune_BERT import process_file
-from finetune_BERT import RelevancyDataset
 import os
 import pandas as pd
 import json
@@ -19,6 +17,14 @@ def is_relevant(input1, input2):
     print(f"Prediction: {prediction.item()}")
     print(f"Probability of Relevance: {p[0][1].item()}")
     return prediction.item()
+
+def process_file(file):
+    for line in file:
+        jsonl = json.loads(line)
+        for instance in jsonl['instances']:
+            line1 = jsonl['instruction'] + instance['input']
+            line2 = instance['output']
+            data.append({'input': line1, 'output': line2, 'label': 1})
 
 test_data = []
 

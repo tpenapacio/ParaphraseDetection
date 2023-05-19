@@ -26,7 +26,7 @@ def process_file(file):
             line2 = instance['output']
             data.append({'input': line1, 'output': line2, 'label': 1})
 
-test_data = []
+data = []
 
 # hehe when we generate test data
 with open('', 'r') as f:

@@ -29,7 +29,7 @@ def process_file(file):
 data = []
 
 # hehe when we generate test data
-with open('', 'r') as f:
+with open('data/evaluation_tasks.jsonl', 'r') as f:
     process_file(f)
 
 df1 = pd.DataFrame(data)
@@ -42,15 +42,15 @@ test_set = test_set.sample(frac=1).reset_index(drop=True)
 
 os.makedirs('./eval', exist_ok=True)
 
-df = pd.DataFrame(columms = ['input', 'output', 'label', 'prediction'])
 
-for i, row in df.iterrows():
-    pred = is_relevant(test_set['input'], test_set['output'])
-    df.append({'input' : test_set['input'], 
+res = []
+for i, row in test_set.iterrows():
+    pred = is_relevant(row['input'], row['output'])
+    res.append({'input' : test_set['input'], 
                 'output' : test_set['output'],
                 'label' : test_set['label'],
                 'prediction' : pred})
-
+df = pd.DataFrame.from_dict(res)
 df.to_csv('eval/preds')
 
 # random exploration using generated pairs
